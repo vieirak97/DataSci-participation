@@ -1,0 +1,41 @@
+---
+title: "Trying Out R Markdown"
+author: "Karen Vieira"
+date: Last updated  `r format(Sys.time(), "%d %B, %Y")`
+output: 
+  html_document:
+    theme: cerulean
+    toc: TRUE
+---
+
+```{r}
+# install.packages(gapminder)
+# install.packages('DT')
+# install.packages('tibble')
+
+```
+
+
+```{r}
+library(gapminder)
+library(DT)
+library(tibble)
+```
+
+```{r this is me naming a chunk it won't show up in the output it's just for me to know what I'm doing}
+mtcars
+mean(mtcars["mpg"])
+
+mtcars["mpg"]
+mtcars[["mpg"]]
+mtcars$cyl
+mean(mtcars$cyl)
+
+unique(mtcars$cyl)
+```
+
+```{r gapminder, echo=FALSE}
+gapminder
+```
+
+
