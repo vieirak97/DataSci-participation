@@ -96,7 +96,7 @@ guest_long %>%
 ```{r}
 guest_long %>% 
   group_by(party, name) %>% 
-  summarize(pending_wedding = all(attendance == "PENDING"))
+  summarize(pending_wedding = all(event == "PENDING"))
 ```
 
 
