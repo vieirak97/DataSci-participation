@@ -143,7 +143,7 @@ with two toy tibbles named `y` and `z`, similar to Data Wrangling Cheatsheet
 ```
 
 1. Rows that appear in both `y` and `z`
-
+ 
 ```{r}
 intersect(y, z)
 ```
