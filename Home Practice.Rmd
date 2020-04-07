@@ -110,5 +110,9 @@ Troubleshooting Github:
 
 If a conflict occurs DO NOT PANIC *instead* Update the file that has the conflict, commit your changes, and push.
 
-
+Make a mistake? That's okay!
+The three most useful “undo”s are:
+- Undoing your (uncommited) work and reverting to the previous commit.
+- Reverting a single previous commit.
+- Browsing the repo at previous states, and taking files from there.
 
