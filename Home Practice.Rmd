@@ -1,0 +1,108 @@
+---
+title: "Lets Learn Everything Again"
+author: "Karen Vieira"
+date: "4/2/2020"
+output: html_document
+keep_md: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+###Class Meeting 1 Review
+
+##Functions
+
+```{r}
+vector_name_second <- c(4,5,6)
+```
+
+You create a vector like shown above name <- c()
+
+```{r}
+range(vector_name_second)
+```
+Functions always go on the left. For a list of functions go here: http://adv-r.had.co.nz/Vocabulary.html
+
+```{r}
+?mean
+```
+
+This is the help function. The help function allows you to figure out how a function works.
+
+A fuction has arguments. 4 to be exact.
+
+if an argument says something like name = value, this will have a defult and you do not need to give it any specific info about it, if an argument says X then you DO have to have something input there
+
+```{r}
+names(mtcars)
+```
+
+mtcars is an example of a data frame. There are also some functions here to better understand the data frame shown.
+
+head() shows the first couple rows
+tail() shows the last couple rows
+nrow() tells you the number of rows you have
+ncol() tells you the number of collums you have
+summary() gives you quartile data for each variable
+names() tells you what each variable is labeled as
+
+```{r}
+library(tibble)
+browseVignettes(package = "tibble")
+```
+
+here are some helpful links when it comes to writing notes in markdown https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf and https://rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf
+
+```{r}
+
+```
+
+You can add a code chunk instantly by hitting command + alt + i
+
+```{r}
+library(gapminder)
+library(tibble)
+library(knitr)
+library(DT)
+
+as_tibble(mtcars) -> mtcars_tbl
+```
+make sure that the arrow is facing the name of the new vector you would like to create
+
+##dataset printing
+
+```{r}
+print(mtcars_tbl)
+```
+
+```{r}
+kable(mtcars_tbl)
+```
+print and kable look aesthetically different
+
+```{r}
+kable(gapminder)
+```
+you can only see first couple with kable on consel so to make it easier to look at use datatable() 
+```{r}
+datatable(gapminder)
+```
+Here you can use a search function and sort the data however you want
+
+##YAML
+The YAML header is something specific to RMarkdown. It can be used to change certain aspects of the file or how the output of the file is created. 
+For types of things you can add and how to add them follow this link: https://bookdown.org/yihui/rmarkdown/html-document.html
+
+###Class Meeting 2 Review
+
+**If you are stuck at any point in an assignment this is a great resource for what to do: https://wiernik-datasci.netlify.com/help-general/**
+
+It's important when asking questions to provide links to what you are having issues with. If you can't get an output these are the instructions for creating a reproducible example https://stackoverflow.com/help/minimal-reproducible-example
+
+This is the link to use when you need to ask the class and Dr. Wiernik a question https://github.com/USF-Psych-DataSci-2020/Discussion/issues
+
+###Class Meeting 3 Review
+
+
