@@ -92,6 +92,7 @@ datatable(gapminder)
 Here you can use a search function and sort the data however you want
 
 ##YAML
+
 The YAML header is something specific to RMarkdown. It can be used to change certain aspects of the file or how the output of the file is created. 
 For types of things you can add and how to add them follow this link: https://bookdown.org/yihui/rmarkdown/html-document.html
 
@@ -104,5 +105,10 @@ It's important when asking questions to provide links to what you are having iss
 This is the link to use when you need to ask the class and Dr. Wiernik a question https://github.com/USF-Psych-DataSci-2020/Discussion/issues
 
 ###Class Meeting 3 Review
+
+Troubleshooting Github:
+
+If a conflict occurs DO NOT PANIC *instead* Update the file that has the conflict, commit your changes, and push.
+
 
 
