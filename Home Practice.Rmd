@@ -104,7 +104,7 @@ It's important when asking questions to provide links to what you are having iss
 
 This is the link to use when you need to ask the class and Dr. Wiernik a question https://github.com/USF-Psych-DataSci-2020/Discussion/issues
 
-###Class Meeting 3 Review
+### Class Meeting 3 Review
 
 Troubleshooting Github:
 
@@ -116,3 +116,40 @@ The three most useful “undo”s are:
 - Reverting a single previous commit.
 - Browsing the repo at previous states, and taking files from there.
 
+### Class Meeting 4 Review
+
+ggplot2 cheatsheet - https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf
+R Graphics Cookbook - http://www.cookbook-r.com/Graphs/
+Good as a reference if you want to learn how to make a specific type of plot.
+
+**You can think of the grammar of graphics as a systematic approach for describing the components of a graph. It has seven components (the ones in bold are required to be specifed explicitly in ggplot2):**
+
+*Data*
+The data that you’re feeding into a plot.
+
+*Aesthetic mappings*
+How are variables (columns) from your data connect to a visual dimension?
+Horizontal positioning, vertical positioning, size, colour, shape, etc.
+These visual dimensions are called “aesthetics”
+
+*Geometric objects*
+What are the objects that are actually drawn on the plot?
+A point, a line, a bar, a histogram, a density, etc.
+
+Scales
+How is a variable mapped to its aesthetic?
+Will it be mapped linearly? On a log scale? Something else?
+This includes things like the color scale
+e.g., c(control, treatment_1, treatment_2) -> c(“blue”, “green”, “red”)
+
+Statistical transformations
+Whether and how the data are combined/transformed before being plotted
+e.g., in a bar chart, data are transformed into their frequencies; in a box-plot, data are transformed to a five-number summary.
+
+Coordinate system
+This is a specification of how the position aesthetics (x and y) are depicted on the plot. For example, rectangular/cartesian, or polar coordinates.
+
+Facet
+This is a specification of data variables that partition the data into smaller “sub plots”, or panels.
+
+These components are like parameters of statistical graphics, defining the “space” of statistical graphics. In theory, there is a one-to-one mapping between a plot and its grammar components, making this a useful way to specify graphics.
