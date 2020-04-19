@@ -56,7 +56,7 @@ also notice that `ggplot2` ignores the grouping of a tibble!
 gapminder %>% 
   group_by(country) %>% 
   ggplot(aes(year, lifeExp,)) +
-  geom_line(aes(group = year)) 
+  geom_line(aes(group = country)) 
 ```
 
 ## Exercise 3: More gdpPercap vs lifeExp
