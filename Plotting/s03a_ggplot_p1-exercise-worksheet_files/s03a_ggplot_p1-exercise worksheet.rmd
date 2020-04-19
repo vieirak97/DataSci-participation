@@ -129,7 +129,7 @@ Fill in the blanks to obtain the plot:
 
 ```{r, fig.width = 5, fig.height = 2}
 ggplot(mauna, aes(month,conc)) +
-  geom_line(color = "yellow")
+  geom_line()
 ```
 
 ### 2(b)
