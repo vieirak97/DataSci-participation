@@ -153,9 +153,10 @@ We're starting with the same plot as above, but instead of the points + boxplot,
 ```{r, fig.width = 5, fig.height = 2}
 gapminder %>% 
   filter(continent == "Americas") %>% 
-  ggplot(aes(x = country, y =lifeExp)) + 
-  geom_density_ridges(aes("lifeExp"))
+  ggplot(aes(country, lifeExp)) +
+  ggridges::geom_density_ridges()
 ```
+Not running need to ask Wiernik about Bandwith in grammar 
 
 ## Exercise 6: Bar plot madness
 
@@ -171,8 +172,8 @@ gapminder %>%
 ```{r, fig.width = 5, fig.height = 2}
 mtcars %>% 
   mutate(transmission = if_else(am == 0, "automatic", "manual")) %>% 
-  ggplot(aes(cyl)) +
-  geom_bar(aes(color = transmission))
+  ggplot(aes(cyl,..prop.. )) +
+  geom_bar(aes(fill= transmission))
 ```
 
 ### 6(b) Bar heights already calculated
@@ -188,7 +189,7 @@ Fix the following bar plot so that it shows these counts.
 
 ```{r}
 ggplot(hair, aes(Hair, n)) +
-  geom_bar()
+  geom_col()
 ```
 
 ## Exercise 7: Tiling
@@ -205,7 +206,7 @@ _Hint:_ What's the title of this exercise?
 
 ```{r}
 ggplot(hair_eye, aes(Hair, Eye)) +
-  geom_point(aes(colour = n))
+  geom_tile(aes(fill = n))
 ```
  
 By the way, `geom_count()` is like `geom_bar()`: it counts the number of overlapping points.
