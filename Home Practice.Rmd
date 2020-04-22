@@ -153,3 +153,28 @@ Facet
 This is a specification of data variables that partition the data into smaller “sub plots”, or panels.
 
 These components are like parameters of statistical graphics, defining the “space” of statistical graphics. In theory, there is a one-to-one mapping between a plot and its grammar components, making this a useful way to specify graphics.
+
+## HW Formating
+
+- look at Guide 5.1.1 
+
+## Class Meeting 5
+
+Specific dplyr functions covered
+[ ] select()
+can be used to: decide what to show on tabel, rearange order of variables, or rename variables
+[ ] arrange()
+- put ordered by X
+- you can arrange by more than one thing
+[ ] filter()
+[ ] mutate()
+- The `mutate()` function _creates_ new columns in the tibble by transforming other variables. Like `select()`, `filter()`, and `arrange()`, the `mutate()` function also takes a tibble as its first argument, and returns a tibble. 
+- The general syntax is: mutate(tibble, NEW_COLUMN_NAME = CALCULATION)
+[ ] summarize()
+[ ] group_by()
+[ ] grouped mutate()
+[ ] grouped summarize()
+
+**NOTE:** shorthand for a pipe is cmd+shift+M
+
+We also learn about *%in%* in this class as well as proportional and logical opperators 
