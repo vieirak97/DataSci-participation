@@ -232,8 +232,6 @@ Try the same thing, but with `transmute` (drops all other variables).
 gapminder %>%
   transmute(country, lifeExp, continent,
             gdpBill = (pop * gdpPercap / 100000000) %>% round(2))
-  
-  # having issues dont know what to do
 ```
 
 The `if_else` function is useful for changing certain elements in a data frame.
@@ -257,6 +255,8 @@ gapminder %>%
 Your turn: Make a new column called `cc` that pastes the country name followed by the continent, separated by a comma. (Hint: use the `paste` function with the `sep=", "` argument).
 
 ```{r}
+gapminder %>% 
+  # forgot how to do this but that flower dataset should go over this again?
 ```
 
 These functions we've seen are called __vectorized functions__—they are designed 
