@@ -47,7 +47,7 @@ mtcars_1 <- mtcars %>%
   as_tibble(rownames = "model") %>% 
   filter(cyl == 6) %>% 
   select(model, mpg, hp)
-  
+
 ```
 
 2. Print the results from Task 1 in an appealing way by using `knitr::kable()`.
@@ -78,7 +78,7 @@ iris_wedidit <- iris %>%
 library(ggplot2) 
   iris_wedidit %>% 
   ggplot(aes(x = species, y = sepal_width))+
-    geom_jitter(alpha = 0.5)
+    geom_boxplot(alpha = 0.5)
 ```
 
 5. `iris` expresses all of the measurements in centimeters. Convert them to 
@@ -95,7 +95,7 @@ iris_inin <- iris_wedidit %>%
 ```{r}
 iris_inin %>% 
   ggplot(aes(x = sepal_width, y = sepal_length)) +
-  geom_point(aes(shape = species, color = species))
+  geom_point(aes(shape = species, color = species, alpha = 0.5))
 
 ```
 
