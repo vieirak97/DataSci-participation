@@ -172,6 +172,7 @@ can be used to: decide what to show on tabel, rearange order of variables, or re
 - The general syntax is: mutate(tibble, NEW_COLUMN_NAME = CALCULATION)
 [ ] transmutate
 - same as mutate but it drops all the other variables
+- you can still add other variables you want to keep though with a comma
 [ ] summarize()
 [ ] group_by()
 [ ] grouped mutate()

@@ -127,7 +127,7 @@ Let's do some practice with grouping (and ungrouping) and summarizing data frame
 ```{r}
 gapminder %>% 
   group_by(continent, year) %>% 
-  summerize(min_life = min(round(lifeExp -1)))
+  summerize(min_life = min(round(lifeExp -1))) %>% 
 #why is this not working I don't understand
 ```
 
