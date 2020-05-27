@@ -158,6 +158,21 @@ These components are like parameters of statistical graphics, defining the “sp
 
 - look at Guide 5.1.1 
 
+title: 's05: Some More `dplyr` Exercise'
+output: 
+  html_document:
+    keep_md: true
+    theme: paper
+    
+**When you make an Rmd file for participation or homework, be sure to do this**:
+ 
+1. Change the file output to both html and md _documents_ (not notebook).
+  - See the `keep_md: TRUE` argument above.
+
+2. `knit` the document. 
+
+3. Stage and commit the Rmd and knitted documents.
+
 ## Class Meeting 5
 
 Specific dplyr functions covered
