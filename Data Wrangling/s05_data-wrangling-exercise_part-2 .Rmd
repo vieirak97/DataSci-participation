@@ -128,7 +128,7 @@ Let's do some practice with grouping (and ungrouping) and summarizing data frame
 ```{r}
 gapminder %>% 
   group_by(continent, year) %>% 
-  summerize(min_life = min(lifeExp -1)) %>% 
+  summerize(min_life = min(LifeExp)) %>% 
   select(country) %>% 
   arrange(min_life)
 ```
@@ -143,13 +143,23 @@ psych::bfi %>%
   select(A1:A5) %>% 
   rowwise() %>% 
   mutate(A_mean = mean(c(A1, A2, A3, A4, A5), na.rm = TRUE)) %>% 
-  ungroup()
+  ungroup() %>% 
+  drop_na()
 ```
 
 Now compute mean scores for Conscientiousness, as well as `sd` and `min` scores 
 for reach person.
 
 ```{r}
+psych::bfi %>%
+  as_tibble() %>% 
+  select(C1:C5) %>% 
+  rowwise() %>% 
+  mutate(C_mean = mean(c(C1, C2, C3, C4, C5), na.rm = TRUE)) %>% 
+   mutate(C_sd = sd(c(C1, C2, C3, C4, C5), na.rm = TRUE)) %>% 
+   mutate(C_min = min(c(C1, C2, C3, C4, C5), na.rm = TRUE)) %>% 
+  ungroup() %>% 
+  drop_na()
 
 ```
 
@@ -196,11 +206,19 @@ psych::bfi %>%
    (1) each participant's educational level (convert it to a categorical variable
    using `factor*()`) and the mean score for each of the Big Five scales for each 
    participant. Store this data frame as a new object.
+
    
 ```{r}
-FILL_THIS_IN <-
+BFI_new <-
   psych::bfi %>% 
-  FILL_THIS_IN(FILL_THIS_IN)
+  mutate(A_mn = rowMeans(select(A1:A5)) %>% 
+           mutate(C_mn = rowMeans(select(C1:C5)) %>% 
+                    mutate(N_mn = rowMeans(select(N1:N5)) %>% 
+                             mutate(E_mn = rowMeans(select(E1:E5)) %>% 
+                                      factor(levels = 'education')
+                                      
+  
+
 ```
 
 4. Use the data from Task 3 to summarize the distributions of Big Five scores 
