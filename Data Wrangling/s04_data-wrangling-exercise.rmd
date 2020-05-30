@@ -256,6 +256,8 @@ Your turn: Make a new column called `cc` that pastes the country name followed b
 
 ```{r}
 gapminder %>% 
+  mutate(cc= paste(country, continent, sep= ", "))
+
   # forgot how to do this but that flower dataset should go over this again?
 ```
 

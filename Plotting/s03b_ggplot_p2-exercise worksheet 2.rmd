@@ -84,8 +84,8 @@ ggplot(gapminder, aes(gdpPercap, lifeExp)) +
 ```{r, fig.width = 5, fig.height = 2}
 gapminder %>% 
   filter(continent != "Oceania") %>% 
-  ggplot(aes(gdpPercap, lifeExp)) +
-  facet_wrap(~ continent) +
+  ggplot(aes(gdpPercap, lifeExp, size = pop)) +
+  facet_wrap(~ continent, nrow= 1) +
   geom_point(alpha = 0.2) +
   scale_x_log10(labels = scales::comma_format()) +
   scale_size_area()
@@ -153,7 +153,7 @@ We're starting with the same plot as above, but instead of the points + boxplot,
 ```{r, fig.width = 5, fig.height = 2}
 gapminder %>% 
   filter(continent == "Americas") %>% 
-  ggplot(aes(country, lifeExp)) +
+  ggplot(aes(y = country, x = lifeExp)) +
   ggridges::geom_density_ridges()
 ```
 Not running need to ask Wiernik about Bandwith in grammar 
@@ -191,6 +191,7 @@ Fix the following bar plot so that it shows these counts.
 ggplot(hair, aes(Hair, n)) +
   geom_col()
 ```
+won't let me see it as a bar graph only when I change it to geom_col??
 
 ## Exercise 7: Tiling
 

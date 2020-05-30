@@ -126,10 +126,11 @@ Let's do some practice with grouping (and ungrouping) and summarizing data frame
    (c) Arrange by min life expectancy.
 
 ```{r}
+
 gapminder %>% 
   group_by(continent, year) %>% 
-  summerize(min_life = min(LifeExp)) %>% 
-  select(country) %>% 
+  filter(lifeExp == min(lifeExp)) %>% 
+  select(country, min_life= lifeExp) %>% 
   arrange(min_life)
 ```
 
@@ -211,13 +212,13 @@ psych::bfi %>%
 ```{r}
 BFI_new <-
   psych::bfi %>% 
-  mutate(A_mn = rowMeans(select(A1:A5)) %>% 
-           mutate(C_mn = rowMeans(select(C1:C5)) %>% 
-                    mutate(N_mn = rowMeans(select(N1:N5)) %>% 
-                             mutate(E_mn = rowMeans(select(E1:E5)) %>% 
-                                      factor(levels = 'education')
-                                      
-  
+  mutate(A_mn = rowMeans(select(.,A1:A5)), 
+         C_mn = rowMeans(select(.,C1:C5)),
+         N_mn = rowMeans(select(.,N1:N5)),
+         E_mn = rowMeans(select(.,E1:E5))
+         ) %>% 
+  mutate(Education= factor(education, levels= c(1,2,3,4,5))) %>% 
+  drop_na()
 
 ```
 
