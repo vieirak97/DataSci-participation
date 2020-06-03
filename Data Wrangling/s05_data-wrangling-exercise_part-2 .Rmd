@@ -47,7 +47,7 @@ mtcars_1 <- mtcars %>%
   as_tibble(rownames = "model") %>% 
   filter(cyl == 6) %>% 
   select(model, mpg, hp)
-  
+
 ```
 
 2. Print the results from Task 1 in an appealing way by using `knitr::kable()`.
@@ -78,7 +78,8 @@ iris_wedidit <- iris %>%
 library(ggplot2) 
   iris_wedidit %>% 
   ggplot(aes(x = species, y = sepal_width))+
-    geom_jitter(alpha = 0.5)
+    geom_boxplot(alpha = 0.5)+
+    geom_jitter()
 ```
 
 5. `iris` expresses all of the measurements in centimeters. Convert them to 
@@ -95,7 +96,7 @@ iris_inin <- iris_wedidit %>%
 ```{r}
 iris_inin %>% 
   ggplot(aes(x = sepal_width, y = sepal_length)) +
-  geom_point(aes(shape = species, color = species))
+  geom_point(aes(shape = species, color = species, alpha = 0.5))
 
 ```
 
@@ -125,10 +126,12 @@ Let's do some practice with grouping (and ungrouping) and summarizing data frame
    (c) Arrange by min life expectancy.
 
 ```{r}
+
 gapminder %>% 
   group_by(continent, year) %>% 
-  summerize(min_life = min(round(lifeExp -1)))
-#why is this not working I don't understand
+  filter(lifeExp == min(lifeExp)) %>% 
+  select(country, min_life= lifeExp) %>% 
+  arrange(min_life)
 ```
 
 
@@ -141,13 +144,23 @@ psych::bfi %>%
   select(A1:A5) %>% 
   rowwise() %>% 
   mutate(A_mean = mean(c(A1, A2, A3, A4, A5), na.rm = TRUE)) %>% 
-  ungroup()
+  ungroup() %>% 
+  drop_na()
 ```
 
 Now compute mean scores for Conscientiousness, as well as `sd` and `min` scores 
 for reach person.
 
 ```{r}
+psych::bfi %>%
+  as_tibble() %>% 
+  select(C1:C5) %>% 
+  rowwise() %>% 
+  mutate(C_mean = mean(c(C1, C2, C3, C4, C5), na.rm = TRUE)) %>% 
+   mutate(C_sd = sd(c(C1, C2, C3, C4, C5), na.rm = TRUE)) %>% 
+   mutate(C_min = min(c(C1, C2, C3, C4, C5), na.rm = TRUE)) %>% 
+  ungroup() %>% 
+  drop_na()
 
 ```
 
@@ -194,21 +207,33 @@ psych::bfi %>%
    (1) each participant's educational level (convert it to a categorical variable
    using `factor*()`) and the mean score for each of the Big Five scales for each 
    participant. Store this data frame as a new object.
+
    
 ```{r}
-FILL_THIS_IN <-
+BFI_new <-
   psych::bfi %>% 
-  FILL_THIS_IN(FILL_THIS_IN)
+  mutate(A_mn = rowMeans(select(.,A1:A5)), 
+         C_mn = rowMeans(select(.,C1:C5)),
+         N_mn = rowMeans(select(.,N1:N5)),
+         E_mn = rowMeans(select(.,E1:E5))
+         ) %>% 
+  mutate(Education= factor(education, levels= c(1,2,3,4,5))) %>% 
+  drop_na()
+
 ```
 
 4. Use the data from Task 3 to summarize the distributions of Big Five scores 
    for each educational level (e.g., report the mean, sd, min, and max for
    each score in each group). Also report the sample size within each group.
    
+    ***HELP***
+    
+    should I be grouping by education or should I be grouping by 
+   
 ```{r}
-FILL_THIS_IN %>% 
-  FILL_THIS_IN(FILL_THIS_IN) %>% 
-  FILL_THIS_IN(FILL_THIS_IN)
+BFI_new %>% 
+  group_by(Education) %>% 
+  summarise(mu= mean() )
 ```  
 
 
