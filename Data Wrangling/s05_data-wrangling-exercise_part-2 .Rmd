@@ -226,10 +226,14 @@ BFI_new <-
    for each educational level (e.g., report the mean, sd, min, and max for
    each score in each group). Also report the sample size within each group.
    
+    ***HELP***
+    
+    should I be grouping by education or should I be grouping by 
+   
 ```{r}
-FILL_THIS_IN %>% 
-  FILL_THIS_IN(FILL_THIS_IN) %>% 
-  FILL_THIS_IN(FILL_THIS_IN)
+BFI_new %>% 
+  group_by(Education) %>% 
+  summarise(mu= mean() )
 ```  
 
 
