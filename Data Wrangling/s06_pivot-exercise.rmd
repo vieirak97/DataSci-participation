@@ -134,9 +134,18 @@ email %>%
 
 ```{r}
 n <- 100
-FILL_THIS_IN(label = FILL_THIS_IN,
-             FILL_THIS_IN = rnorm(n),
-             FILL_THIS_IN)
+#FILL_THIS_IN(label = FILL_THIS_IN,
+#             FILL_THIS_IN = rnorm(n),
+#             FILL_THIS_IN)
+#
+# if you want the so-called 'error function'
+#erf <- function(x) 2 * pnorm(x * sqrt(2)) - 1
+#
+tibble(label= "Sample A",
+       x = rnorm(n),
+       y = x + (2 * pnorm(x * sqrt(2))-1) )
+       
+       
 ```
 
 
@@ -169,5 +178,6 @@ experiment <- tibble(
 )
 experiment %>% expand(name, trt, rep)
 ```
+
 
 

@@ -255,7 +255,7 @@ gapminder %>%
 Your turn: Make a new column called `cc` that pastes the country name followed by the continent, separated by a comma. (Hint: use the `paste` function with the `sep=", "` argument).
 
 ```{r}
-gapminder %>% 
+gapminder %>%
   mutate(cc= paste(country, continent, sep= ", "))
 
   # forgot how to do this but that flower dataset should go over this again?
