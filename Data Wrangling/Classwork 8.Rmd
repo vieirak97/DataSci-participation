@@ -8,7 +8,6 @@ output: html_document
 ```{r}
 library(tidyverse)
 library(gapminder)
-library(here)
 ```
 
 ```{r}
@@ -20,7 +19,9 @@ getwd()
 ```{r}
 (gap_asia_2007 <- gapminder %>% filter(year == 2007, continent == "Asia"))
 
+
 # to save a data set from console to computer
+library(here)
 write_csv(gap_asia_2007, here::here("data", "s008_data", "exported_file.csv"))
 
 # how to find and show dataset on computer
@@ -34,7 +35,15 @@ read_csv(url)
 ```
 
 ```{r}
+library(readxl) 
 
+#how to create a new folder from within R
+dir.create(here::here("data", "s008_data_2"), recursive = TRUE)
+
+# to download a excel file you must first save that file to an object. Here we save it to an object we have called xls_url
+xls_url <- "http://gattonweb.uky.edu/sheather/book/docs/datasets/GreatestGivers.xls"
+# the next step is to use the download.file() function to download the file onto your computer
+download.file(xls_url, here::here("data", "s008_data_2", "some_file.xls"), mode = "wb")
 ```
 
 
