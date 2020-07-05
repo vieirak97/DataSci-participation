@@ -16,6 +16,7 @@ getwd()
 
 ```
 
+**CVS FILE**
 ```{r}
 (gap_asia_2007 <- gapminder %>% filter(year == 2007, continent == "Asia"))
 
@@ -26,15 +27,15 @@ write_csv(gap_asia_2007, here::here("data", "s008_data", "exported_file.csv"))
 
 # how to find and show dataset on computer
 read_csv(here::here("data", "s008_data", "exported_file.csv"))
-```
 
-```{r}
 # how to get a dataset off the internet
 url <- "http://gattonweb.uky.edu/sheather/book/docs/datasets/magazines.csv"
 read_csv(url)
 ```
 
+**Excel**
 ```{r}
+
 library(readxl) 
 
 #how to create a new folder from within R
@@ -44,6 +45,39 @@ dir.create(here::here("data", "s008_data_2"), recursive = TRUE)
 xls_url <- "http://gattonweb.uky.edu/sheather/book/docs/datasets/GreatestGivers.xls"
 # the next step is to use the download.file() function to download the file onto your computer
 download.file(xls_url, here::here("data", "s008_data_2", "some_file.xls"), mode = "wb")
+
+
+# Naming a file “some_file” is extremely bad practice (hard to keep track of the files), and you should always give it a more descriptive name. Often, it’s a good idea to name the file similarly (or the same as) the original file (sometimes that might not be a good idea if the original name is non-descriptive).
+
+# There’s handy trick to extract the filename from the URL:
+file_name <- basename(xls_url)
+download.file(xls_url, here::here("data", "s008_data", file_name), mode = "wb")
+# after running this the file name showsup in tht enviorment as an object
+
+#to import an excel file into R
+read_excel(here::here("data", "s008_data", file_name))
+```
+
+**SPSS**
+```{r}
+library(haven)
+
+(clevel <- haven::read_spss(here::here("data", "s008_data", "clevel.sav")))
+
+# we are doing the following to clean up the dataset
+clevel_cleaned <-
+  clevel %>% 
+  mutate(language = as_factor(language),
+         gender = as_factor(gender),
+         isClevel = factor(isClevel, 
+                           levels = c(0, 1), 
+                           labels = c("No", "Yes"))
+  ) %>% 
+  print()
+
+# then we go ahead and change the SPSS file into a CSV file
+#we do this to 1) save space 2) make it easier to pull up later on
+write_csv(clevel_cleaned, here::here("data", "s008_data", "clevel_cleaned.csv"))
 ```
 
 
