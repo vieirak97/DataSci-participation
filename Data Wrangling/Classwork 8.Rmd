@@ -85,9 +85,30 @@ write_csv(clevel_cleaned, here::here("data", "s008_data", "clevel_cleaned.csv"))
 ```{r}
 
 #here a plot is being created for us to use as an example 
+clevel_plot <-
+  clevel_cleaned %>% 
+  mutate(isClevel = recode(isClevel, 
+                           No = "Below C-level", 
+                           Yes = "C-level"),
+         gender = recode(gender,
+                         Female = "Women",
+                         Male = "Men")) %>% 
+  ggplot(aes(paste(isClevel, gender, sep = "\n"), Extraversion, color = gender)) +
+  geom_boxplot() +
+  geom_jitter(height = .2) +
+  scale_color_manual(values = c("#1b9e77", "#7570b3")) +
+  ggtitle("Extraversion Stan Scores") +
+  scale_y_continuous(breaks = 1:9)  %>% 
+  print()
 
-# ASK FOR HELP HERE THE EXAMPLe IS NOT RUNNING FOR SOME REASON !!!!!!
+## NONE OF THESE WORK :)
 
+dir.create(here::here("output", "figures"))
+ggsave(here::here("output", "figures", "clevel_extraversion.svg"), clevel_plot)
+ggsave(here::here("output", "figures", "clevel_extraversion.eps"), clevel_plot)
+ggsave(here::here("output", "figures", "clevel_extraversion.pdf"), clevel_plot)
+ggsave(here::here("output", "figures", "clevel_extraversion.tiff"), clevel_plot)
+ggsave(here::here("output", "figures", "clevel_extraversion.png"), clevel_plot)
 ```
 
 ```{r}
