@@ -1,0 +1,40 @@
+---
+title: "paricipation project"
+author: "Karen Vieira"
+date: "7/5/2020"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+library(gapminder)
+library(here)
+```
+
+```{r}
+# to find what path your on
+getwd()
+
+```
+
+```{r}
+(gap_asia_2007 <- gapminder %>% filter(year == 2007, continent == "Asia"))
+
+# to save a data set from console to computer
+write_csv(gap_asia_2007, here::here("data", "s008_data", "exported_file.csv"))
+
+# how to find and show dataset on computer
+read_csv(here::here("data", "s008_data", "exported_file.csv"))
+```
+
+```{r}
+# how to get a dataset off the internet
+url <- "http://gattonweb.uky.edu/sheather/book/docs/datasets/magazines.csv"
+read_csv(url)
+```
+
+```{r}
+
+```
+
+
