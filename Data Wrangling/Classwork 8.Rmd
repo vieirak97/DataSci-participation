@@ -60,6 +60,7 @@ read_excel(here::here("data", "s008_data", file_name))
 
 **SPSS**
 ```{r}
+
 library(haven)
 
 (clevel <- haven::read_spss(here::here("data", "s008_data", "clevel.sav")))
@@ -78,6 +79,19 @@ clevel_cleaned <-
 # then we go ahead and change the SPSS file into a CSV file
 #we do this to 1) save space 2) make it easier to pull up later on
 write_csv(clevel_cleaned, here::here("data", "s008_data", "clevel_cleaned.csv"))
+```
+
+**SAVING PLOTS**
+```{r}
+
+#here a plot is being created for us to use as an example 
+
+# ASK FOR HELP HERE THE EXAMPLe IS NOT RUNNING FOR SOME REASON !!!!!!
+
+```
+
+```{r}
+
 ```
 
 
