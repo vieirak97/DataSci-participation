@@ -103,6 +103,7 @@ clevel_plot <-
 
 ## NONE OF THESE WORK :)
 
+dir.create(here::here("output"))
 dir.create(here::here("output", "figures"))
 ggsave(here::here("output", "figures", "clevel_extraversion.svg"), clevel_plot)
 ggsave(here::here("output", "figures", "clevel_extraversion.eps"), clevel_plot)
