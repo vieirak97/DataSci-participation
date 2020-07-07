@@ -79,6 +79,7 @@ gapminder %>%
   geom_boxplot(aes(x = life_level, y = gdpPercap)) +
   labs(y = "GDP per capita, $", x = "Life expectancy level, years") +
   theme_bw() +
+  scale_x_discrete(drop = FALSE)
 ```
 
 ## Activity 2: Inspecting factors
@@ -97,9 +98,13 @@ answer the following questions:
 
 ```{r}
 
+class(gapminder$continent)
 
+nlevels(gapminder$continent)
 
+levels(gapminder$continent)
 
+str(gapminder$continent)
 ```
 
 ### **2.2** Exploring `gapminder$country`
@@ -111,9 +116,14 @@ Let's explore what else we can do with factors. Answer the following questions:
   in your filtered dataset?
 
 ```{r}
+nlevels(gapminder$country)
 
+h_countries <- c("Egypt", "Haiti", "Romania", "Thailand", "Venezuela")
 
+h_gap <- gapminder %>%
+  filter(country %in% h_countries)
 
+nlevels(h_gap$country)
 
 ```
 
@@ -126,9 +136,10 @@ single factor. The function `forcats::fct_drop()` operates on a factor and does
 not drop `NA` values.
 
 ```{r}
-h_gap_dropped <- FILL_IN_THIS %>% 
+h_gap_dropped <- h_gap %>% 
   droplevels()
 
+nlevels(h_gap_dropped$country)
 
 ```
 
@@ -139,7 +150,8 @@ Let's say we wanted to re-order the levels of a factor using a new metric - say,
 We should first produce a frequency table as a tibble using `dplyr::count()`:
 
 ```{r}
-
+gapminder %>% 
+  count(continent)
 
 
 ```
@@ -149,9 +161,9 @@ Factors are most useful/helpful when plotting data.
 So let's first plot this:
 
 ```{r}
-FILL_IN_THIS %>%
+gapminder %>%
   ggplot() +
-  geom_bar(aes(FILL_IN_THIS)) +
+  geom_bar(aes(continent)) +
   coord_flip() +
   theme_bw() +
   ylab("Number of entries") + xlab("Continent")
@@ -172,10 +184,11 @@ However, it is often preferable to order the levels according to some principle:
 ```{r}
 gapminder %>%
   ggplot() +
-  geom_bar(aes(FILL_IN_THIS)) +
+  geom_bar(aes(fct_rev(continent))) +
   coord_flip() +
   theme_bw() +
   ylab("Number of entries") + xlab("Continent")
+  
 ```
 
 Section 9.6 of Jenny Bryan's [notes](https://stat545.com/factors-boss.html#reorder-factors) has some helpful examples.
@@ -189,7 +202,7 @@ Section 9.6 of Jenny Bryan's [notes](https://stat545.com/factors-boss.html#reord
 ##  default summarizing function is median()
 gapminder %>%
   ggplot() +
-  geom_bar(aes(FILL_IN_THIS)) +
+  geom_bar(aes(fct_reorder(continent, lifeExp, max))) +
   coord_flip() +
   theme_bw() +
   xlab("Continent") + ylab("Number of entries") 
