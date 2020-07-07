@@ -214,7 +214,7 @@ another quantitative y and your factor provides the color.
 ```{r}
 ## order by life expectancy 
 ggplot(h_gap, aes(x = year, y = lifeExp,
-                  color = FILL_IN_THIS)) +
+                  color = fct_reorder2(country, year, lifeExp))) +
   geom_line() +
   labs(color = "Country")
 ```
@@ -227,7 +227,7 @@ in Africa.
 ```{r}
 gapminder %>%
   ggplot() +
-  geom_bar(aes(FILL_IN_THIS)) +
+  geom_bar(aes(fct_relevel(continent, "Oceania"))) +
   coord_flip()+
   theme_bw() 
 ```
@@ -245,8 +245,11 @@ Lets recode `Oceania` and the `Americas` in the graph above as abbreviations
 `OCN` and `AME` respectively using the function `fct_recode()`.
 
 ```{r}
-
-
+gapminder %>%
+  ggplot() +
+  geom_bar(aes(fct_recode(continent, "OCN" = "Oceania", "AME" = "Americas"))) +
+  coord_flip() +
+  theme_bw()
 
 ```
 
