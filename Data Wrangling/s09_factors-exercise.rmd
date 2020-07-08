@@ -245,6 +245,7 @@ Lets recode `Oceania` and the `Americas` in the graph above as abbreviations
 `OCN` and `AME` respectively using the function `fct_recode()`.
 
 ```{r}
+
 gapminder %>%
   ggplot() +
   geom_bar(aes(fct_recode(continent, "OCN" = "Oceania", "AME" = "Americas"))) +
