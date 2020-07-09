@@ -79,18 +79,17 @@ p_scales +
 
 ```{r}
 ## All palettes the come with RColorBrewer:
-RColorBrewer::display.brewer.all()
+
+
 p_scales +
-    scale_x_log10(labels=dollar_format()) +
-     (
+    scale_x_log10(labels = scales::dollar_format()) +
+    scale_colour_viridis_c(
         trans   = "log10",
         breaks  = 10^(1:10),
         labels  = comma_format(),
         palette = 
     ) +
     scale_y_continuous(breaks=10*(1:10))
-
-#not sure about this one
 ```
 
 4. Use `viridis` to change the colour to a colour-blind friendly scheme
@@ -98,13 +97,16 @@ p_scales +
     - You can choose a palette with `option`.
 
 ```{r}
+#RColorBrewer::display.brewer.all()
+#display.brewer.pal(n = 8, name = 'YlOrRd')
+pal <- brewer.pal(n = 3, name = 'YlOrRd')
 p_scales +
     scale_x_log10(labels=dollar_format()) +
     scale_colour_viridis_c(
         trans   = "log10",
         breaks  = 10^(1:10),
         labels  = comma_format(),
-        palette = 
+        option = "plasma"
     ) +
     scale_y_continuous(breaks=10*(1:10))
 ```
@@ -131,6 +133,8 @@ ggplot(iris, aes(Sepal.Width, Sepal.Length)) +
 2. Then, change font size of axis labels, and the strip background colour. Others?
 
 ```{r}
+library("RColorBrewer")
+
 ggplot(iris, aes(Sepal.Width, Sepal.Length)) +
      facet_wrap(~ Species) +
      geom_point() +
