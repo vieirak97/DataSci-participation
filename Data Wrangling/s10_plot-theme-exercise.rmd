@@ -79,15 +79,15 @@ p_scales +
 
 ```{r}
 ## All palettes the come with RColorBrewer:
-
-
+display.brewer.all()
 p_scales +
-    scale_x_log10(labels = scales::dollar_format()) +
-    scale_colour_viridis_c(
-        trans   = "log10",
-        breaks  = 10^(1:10),
-        labels  = comma_format(),
-        palette = 
+    scale_x_log10(labels=scales::dollar_format()) +
+    scale_colour_distiller(
+      labels = scales::comma_format(),  
+      trans  = "log10", 
+      breaks = 10^(1:10), 
+      palette = "YlOrRd",
+      direction = 1
     ) +
     scale_y_continuous(breaks=10*(1:10))
 ```
@@ -97,9 +97,6 @@ p_scales +
     - You can choose a palette with `option`.
 
 ```{r}
-#RColorBrewer::display.brewer.all()
-#display.brewer.pal(n = 8, name = 'YlOrRd')
-pal <- brewer.pal(n = 3, name = 'YlOrRd')
 p_scales +
     scale_x_log10(labels=dollar_format()) +
     scale_colour_viridis_c(
@@ -107,8 +104,9 @@ p_scales +
         breaks  = 10^(1:10),
         labels  = comma_format(),
         option = "plasma"
-    ) +
-    scale_y_continuous(breaks=10*(1:10))
+
+    ) 
+#    scale_y_continuous(breaks=10*(1:10))
 ```
 
 # Theming
